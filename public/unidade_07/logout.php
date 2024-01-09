@@ -3,11 +3,11 @@
 <?php 
     session_start();
     unset($_SESSION["user_portal"]);
-    header("location: login.php");
+    header("location:login.php");
 
     if(!isset($_SESSION["usuario"]))
     {
-        header("Location: pagina1.php");
+        header("location:pagina1.php");
     }
 ?>
 

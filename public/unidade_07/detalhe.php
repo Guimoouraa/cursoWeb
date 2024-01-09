@@ -11,7 +11,7 @@
     if ( isset($_GET["codigo"]) ) {
         $produto_id = $_GET["codigo"];
     } else {
-        Header("Location: inicial.php");
+        header("Location: inicial.php");
     }
 
     // Consulta ao banco de dados

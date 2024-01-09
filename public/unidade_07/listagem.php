@@ -2,9 +2,10 @@
 
 <?php
 
-    // iniciar variavel de acesso
+    // iniciar variavel de sessao
     session_start();
-    if( !isset($_SESSION["user_portal"])){
+
+    if( !isset($_SESSION["user_portal"])) {
         header("location:login.php");
     }
     // Determinar localidade BR
