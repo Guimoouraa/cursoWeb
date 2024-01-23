@@ -12,7 +12,24 @@
         $tid      = $_POST["transportadoraID"];
 
 
-        
+        // obj de alteração
+        $alterar  = "UPDATE transportadoras ";
+        $alterar .= "SET ";
+        $alterar .= " nometransportadora = '{$nome}', ";
+        $alterar .= " endereco = '{$endereco}', ";
+        $alterar .= " cidade = '{$cidade}', ";
+        $alterar .= "estadoID = {$estado}, ";
+        $alterar .= "cep = '{$cep}', ";
+        $alterar .= "cnpj = '{$cnpj}', ";
+        $alterar .= "telefone = '{$telefone}'";
+        $alterar .= "WHERE transportadoraID = {$tid}";
+
+        $operacao_alteracao = mysqli_query($conecta,$alterar);
+        if (! $operacao_alteracao) {
+            die("erro no banco");
+        } else {
+            header("location:listagem.php");
+        }
     }
 
 
@@ -38,8 +55,8 @@
 
     // consulta na tabela de estados
 
-    $estados = "SELECT estadoID, nome FROM estados";
-    $lista_estados = mysqli_query($conecta,$estados);
+    $estado = "SELECT estadoID, nome FROM estados";
+    $lista_estados = mysqli_query($conecta,$estado);
 
     if(!$lista_estados) {
         die("Falha no banco ");
@@ -77,7 +94,7 @@
                 <input type="text" value="<?php echo $info_transp["cidade"] ?> " name="cidade">
 
                 <label for="estados">Estados</label>
-                <select id="estados" value="" name="estado">
+                <select id="estados" value="" name="estados">
                     <?php
                         $meuestado = $info_transp["estadoID"];
                         while($linha = mysqli_fetch_assoc($lista_estados)) {
